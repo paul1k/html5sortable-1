@@ -1,41 +1,55 @@
+/* eslint-env browser */
+let store = new Map()
 /**
- * @param {Element} element
- * @returns {Object}
+ * @param {Object} config
  */
 export class Store {
-  constructor() {
+  private _config: object = {} // eslint-disable-line no-undef
+
+  constructor (config: object | null | undefined) {
+    this.config(config)
+  }
+
+  set config (config: object | null | undefined) {
 
   }
 
-  setConfig(key: string, value: any) {
+  get config () {
+    return this._config
+  }
+
+  setConfig (key: string, value: any) {
 
   }
 
-  getConfig(key: string) {
+  getConfig (key: string) {
 
   }
 
-  setData(key: string, value: any) {
+  setData (key: string, value: any) {
 
   }
 
-  getData(key: string) {
+  getData (key: string) {
 
   }
 
-  setEvent(key: string, event: any) {
+  setEvent (key: string, event: any) {
 
   }
 
-  getEvent(key: string) {
+  getEvent (key: string) {
 
   }
-
 }
-
-let store = new Map()
-
-export default (sortableElement) => {
+/**
+ * @param {Element} sortableElement
+ * @returns {Class: Store}
+ */
+export default (sortableElement: Element) => {
+  if (!(sortableElement instanceof Element)) {
+    throw new Error('Please provide a sortable to the store function.')
+  }
   // create new instance if not avilable
   if (!store.has(sortableElement)) {
     store.set(sortableElement, new Store())

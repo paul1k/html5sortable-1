@@ -1,8 +1,13 @@
 /* global describe,test,expect */
-import store from '../src/store'
-import {Store as StoreClass} from '../src/store'
+import {default as store, Store as StoreClass} from '../src/store'
 
 describe('Testing data store', () => {
+  test('no sortable provided', () => {
+    // assert before
+    expect(() => { store() }).toThrow('Please provide a sortable to the store function.')
+    expect(() => { store('fake') }).toThrow('Please provide a sortable to the store function.')
+  })
+
   test('should create store if none exists', () => {
     // setup
     let div = window.document.createElement('div')
