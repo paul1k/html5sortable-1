@@ -11,7 +11,7 @@ export class Store {
   }
 
   set config (config: object | null | undefined) {
-
+    
   }
 
   get config () {
@@ -46,13 +46,13 @@ export class Store {
  * @param {Element} sortableElement
  * @returns {Class: Store}
  */
-export default (sortableElement: Element) => {
+export default (sortableElement: Element, options: null) => {
   if (!(sortableElement instanceof Element)) {
     throw new Error('Please provide a sortable to the store function.')
   }
   // create new instance if not avilable
   if (!store.has(sortableElement)) {
-    store.set(sortableElement, new Store())
+    store.set(sortableElement, new Store(options))
   }
   // return instance
   return store.get(sortableElement)
