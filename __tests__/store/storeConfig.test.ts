@@ -19,9 +19,9 @@ describe('Testing data store', () => {
   test('create store with invalid config', () => {
     // setup
     let div = window.document.createElement('div')
-    let config = store(div, 'fake')
+    let config = store(div)
     // assert before
-    expect(config.getConfig('maxItems')).toBe(0)
+    expect(store(div, 'fake').getConfig('maxItems')).toBe(0)
   })
 
   test('create store with custom config', () => {
