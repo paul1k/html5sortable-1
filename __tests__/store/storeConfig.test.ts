@@ -16,6 +16,14 @@ describe('Testing data store', () => {
     expect(store(div)).toBeInstanceOf(StoreClass)
   })
 
+  test('create store with invalid config', () => {
+    // setup
+    let div = window.document.createElement('div')
+    let config = store(div, 'fake')
+    // assert before
+    expect(config.getConfig('maxItems')).toBe(0)
+  })
+
   test('create store with custom config', () => {
     // setup
     let div = window.document.createElement('div')
