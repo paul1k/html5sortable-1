@@ -7,10 +7,6 @@ let store = new Map()
  */
 export class Store {
   private _config: Map<string, any>|null = null // eslint-disable-line no-undef
-
-  constructor (config?: object) {
-    this.config = config
-  }
   /**
    * set the configuration of a class instance
    * @method config
