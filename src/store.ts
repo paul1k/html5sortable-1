@@ -7,6 +7,10 @@ let store = new Map()
  */
 export class Store {
   private _config: Map<string, any>|null = null // eslint-disable-line no-undef
+
+  constructor () {
+    this.config = null
+  }
   /**
    * set the configuration of a class instance
    * @method config
@@ -70,19 +74,15 @@ export class Store {
 }
 /**
  * @param {Element} sortableElement
- * @param {Object} config - optional, configuration object
  * @returns {Class: Store}
  */
-export default (sortableElement: Element, config?: object) => {
+export default (sortableElement: Element) => {
   if (!(sortableElement instanceof Element)) {
     throw new Error('Please provide a sortable to the store function.')
   }
   // create new instance if not avilable
   if (!store.has(sortableElement)) {
-    store.set(sortableElement, new Store(config))
-  // update config if config is given
-  } else if (typeof config === 'object') {
-    store.get(sortableElement).config = config
+    store.set(sortableElement, new Store())
   }
   // return instance
   return store.get(sortableElement)
