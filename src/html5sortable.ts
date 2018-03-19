@@ -298,8 +298,8 @@ export default function sortable (sortableElements, options: object|string|undef
     _attr(items, 'aria-grabbed', 'false')
 
     // Mouse over class
-    if (typeof options.hoverClass === 'string') {
-      let hoverClasses = options.hoverClass.split(' ')
+    if (typeof store(sortableElement).getConfig('hoverClass') === 'string') {
+      let hoverClasses = store(sortableElement).getConfig('hoverClass').split(' ')
       // add class on hover
       _on(items, 'mouseenter', function (e) {
         e.target.classList.add(...hoverClasses)

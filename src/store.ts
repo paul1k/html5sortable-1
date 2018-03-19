@@ -6,7 +6,7 @@ let store = new Map()
  * @param {Object} config
  */
 export class Store {
-  private _config: Map<string, any>|null = null // eslint-disable-line no-undef
+  private _config: any = null // eslint-disable-line no-undef // does not recognize Map<string, any>|null
 
   constructor () {
     this.config = null
@@ -14,7 +14,7 @@ export class Store {
   /**
    * set the configuration of a class instance
    * @method config
-   * @param  config object of configurations
+   * @param {object} config object of configurations
    */
   set config (config?: object): void {
     // combine config with default
@@ -25,10 +25,16 @@ export class Store {
   /**
    * get the configuration map of a class instance
    * @method config
-   * @return {Map<string, any>}
+   * @return {object}
    */
-  get config (): Map<string, any> {
-    return this._config
+  get config (): object {
+    // transform Map to object
+    let config = {}
+    this._config.forEach((key, value) => {
+      config[key] = value
+    })
+    // return object
+    return config
   }
   /**
    * set individual configuration of a class instance
